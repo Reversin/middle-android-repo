@@ -1,12 +1,8 @@
 package com.example.androidpracticumcustomview
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.widget.TextView
 import androidx.activity.ComponentActivity
-import com.example.androidpracticumcustomview.ui.theme.CustomContainer
-
 
 class XmlActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,25 +11,23 @@ class XmlActivity : ComponentActivity() {
     }
 
     private fun startXmlPracticum() {
-        val customContainer = CustomContainer(this)
-        setContentView(customContainer)
-        customContainer.setOnClickListener {
+        val customViewGroup = CustomViewGroup(this)
+        setContentView(customViewGroup)
+        customViewGroup.setOnClickListener {
             finish()
         }
 
         val firstView = TextView(this).apply {
-            // TODO
-            // ...
+            text = "Первый элемент"
+            textSize = 24f
         }
 
         val secondView = TextView(this).apply {
-            // TODO
-            // ...
+            text = "Второй элемент"
+            textSize = 24f
         }
 
-        // Добавление второго элемента через некоторое время (например, по задержке)
-        Handler(Looper.getMainLooper()).postDelayed({
-            customContainer.addView(secondView)
-        }, 2000)
+        customViewGroup.addView(firstView)
+        customViewGroup.addView(secondView)
     }
 }
