@@ -7,6 +7,7 @@ import androidx.compose.material3.Text
 import androidx.compose.ui.unit.sp
 
 class ComposeScreen : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
