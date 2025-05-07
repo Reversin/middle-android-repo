@@ -33,19 +33,19 @@ fun ComposeCustomViewGroup(
 
     val topAlpha by animateFloatAsState(
         targetValue = if (animate) 1f else 0f,
-        animationSpec = tween(durationMillis = 5000)
+        animationSpec = tween(durationMillis = ANIMATION_ALPHA_DURATION_MS)
     )
     val bottomAlpha by animateFloatAsState(
         targetValue = if (animate) 1f else 0f,
-        animationSpec = tween(durationMillis = 5000)
+        animationSpec = tween(durationMillis = ANIMATION_ALPHA_DURATION_MS)
     )
     val topOffsetY by animateDpAsState(
         targetValue = if (animate) 0.dp else screenHeight / 2,
-        animationSpec = tween(durationMillis = 5000)
+        animationSpec = tween(durationMillis = ANIMATION_MOVE_DURATION_MS)
     )
     val bottomOffsetY by animateDpAsState(
         targetValue = if (animate) 0.dp else -screenHeight / 2,
-        animationSpec = tween(durationMillis = 5000)
+        animationSpec = tween(durationMillis = ANIMATION_MOVE_DURATION_MS)
     )
 
     Box(

@@ -4,9 +4,8 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 
-class CustomContainer @JvmOverloads constructor(
+class CustomViewGroup @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
@@ -14,16 +13,10 @@ class CustomContainer @JvmOverloads constructor(
 
     override fun addView(child: View?) {
         if (childCount >= 2) {
-            Toast.makeText(context, "В контейнер помещено более двух дочерних элементов!", Toast.LENGTH_SHORT).show()
-
-            if (context is android.app.Activity) {
-                (context as android.app.Activity).finish()
-            }
-            return
+            throw IllegalStateException("CustomViewGroup может содержать не более двух дочерних элементов")
         }
         super.addView(child)
     }
-
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
 
@@ -65,8 +58,12 @@ class CustomContainer @JvmOverloads constructor(
 
             child.animate()
                 .alpha(1f)
+                .setDuration(ANIMATION_ALPHA_DURATION_MS.toLong())
+                .start()
+
+            child.animate()
                 .translationY(0f)
-                .setDuration(5000)
+                .setDuration(ANIMATION_MOVE_DURATION_MS.toLong())
                 .start()
         }
     }

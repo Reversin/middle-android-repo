@@ -11,9 +11,9 @@ class XmlActivity : ComponentActivity() {
     }
 
     private fun startXmlPracticum() {
-        val customContainer = CustomContainer(this)
-        setContentView(customContainer)
-        customContainer.setOnClickListener {
+        val customViewGroup = CustomViewGroup(this)
+        setContentView(customViewGroup)
+        customViewGroup.setOnClickListener {
             finish()
         }
 
@@ -27,7 +27,7 @@ class XmlActivity : ComponentActivity() {
             textSize = 24f
         }
 
-        customContainer.addView(firstView)
-        customContainer.addView(secondView)
+        customViewGroup.addView(firstView)
+        customViewGroup.addView(secondView)
     }
 }
